@@ -171,7 +171,6 @@ void parse_file ( char * filename,
     else if ( strncmp(line, "circle", strlen(line)) == 0 ) {
       fgets(line, sizeof(line), f);
 
-      printf("yoho\n");
       //generate_curve_coefs(2,2,2,2,1);
       
       //printf("CIRCLE\t%s", line);
