@@ -21,7 +21,7 @@ struct matrix * make_bezier() {
   
   ans->m[1][0] = 3;
   ans->m[1][1] = -6;
-  ans->m[1][2] = -3;
+  ans->m[1][2] = 3;
   ans->m[1][3] = 0;
 
   ans->m[2][0] = -3;
@@ -97,19 +97,37 @@ struct matrix * generate_curve_coefs( double p1, double p2,
   if(type == 0){
     trans = make_hermite();
   }
-  else{
+  if(type == 1){
     trans = make_bezier();
   }
 
   struct matrix * ans;
   ans = new_matrix(4,1);
 
-  add_point(ans, p1, p2, p3);
-  ans->m[3][0] = p4; //to overwrite the left over one
+  //printf("yo\n");
+  //print_matrix(ans);
   
+  add_point(ans, p1, p2, p3);
+  //ans->m[0][0] = p1; //to overwrite the left over one
+  //ans->m[1][0] = p2; //to overwrite the left over one
+  //ans->m[2][0] = p3; //to overwrite the left over one
+  ans->m[3][0] = p4; //to overwrite the left over one
+
+  /*
+  if(type == 1){
+    printf("yo--\n");
+    print_matrix(ans);
+  }
+  */
+    
   matrix_mult(trans, ans);
 
-  //print_matrix(ans);
+  /*
+  if(type == 1){
+    print_matrix(ans);
+  }
+  */
+
   return ans;
   
 }

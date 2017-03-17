@@ -68,6 +68,13 @@ void add_curve( struct matrix *points,
   struct matrix * coefsY;
   coefsY = new_matrix(4,1);
   coefsY = generate_curve_coefs(y0, y1, y2, y3, type);
+
+  /*
+  if(type == 1){
+    //print_matrix(coefsX);
+    //print_matrix(coefsY);
+  }
+  */
   
   double old_x = coefsX->m[3][0];
   double old_y = coefsY->m[3][0];
